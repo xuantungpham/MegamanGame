@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.gamestudio.gameobject;
 
 import com.gamestudio.state.GameWorldState;
@@ -8,6 +12,10 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.Hashtable;
 
+/**
+ *
+ * @author phamn
+ */
 public class FinalBoss extends Human {
 
     private Animation idleforward, idleback;
@@ -119,8 +127,8 @@ public class FinalBoss extends Human {
 
     @Override
     public void attack() {
-        
-        // only switch state attack  
+    
+        // only switch state attack
         
         if(System.currentTimeMillis() - lastAttackTime > timeAttack.get(attackType[attackIndex])){
             lastAttackTime = System.currentTimeMillis();
@@ -150,7 +158,6 @@ public class FinalBoss extends Human {
 
     @Override
     public void draw(Graphics2D g2) {
-        
         if(getState() == NOBEHURT && (System.nanoTime()/10000000)%2!=1)
         {
             System.out.println("Plash...");
@@ -184,7 +191,8 @@ public class FinalBoss extends Human {
                 }
             }
         }
-        // drawBoundForCollisionWithEnemy(g2);
+        drawHealthBar(g2);
+       // drawBoundForCollisionWithEnemy(g2);
     }
     
 }

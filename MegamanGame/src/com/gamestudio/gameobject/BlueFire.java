@@ -1,4 +1,3 @@
-
 package com.gamestudio.gameobject;
 
 import com.gamestudio.state.GameWorldState;
@@ -22,11 +21,13 @@ public class BlueFire extends Bullet{
     
     @Override
     public Rectangle getBoundForCollisionWithEnemy() {
+        // TODO Auto-generated method stub
         return getBoundForCollisionWithMap();
     }
 
     @Override
     public void draw(Graphics2D g2) {
+            // TODO Auto-generated method stub
         if(getSpeedX() > 0){
             if(!forwardBulletAnim.isIgnoreFrame(0) && forwardBulletAnim.getCurrentFrame() == 3){
                 forwardBulletAnim.setIgnoreFrame(0);
@@ -50,6 +51,7 @@ public class BlueFire extends Bullet{
 
     @Override
     public void Update() {
+            // TODO Auto-generated method stub
         if(forwardBulletAnim.isIgnoreFrame(0) || backBulletAnim.isIgnoreFrame(0))
             setPosX(getPosX() + getSpeedX());
         ParticularObject object = getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this);
@@ -65,4 +67,3 @@ public class BlueFire extends Bullet{
     public void attack() {}
 
 }
-

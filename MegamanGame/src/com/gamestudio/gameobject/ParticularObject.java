@@ -27,11 +27,11 @@ public abstract class ParticularObject extends GameObject {
     private float speedX;
     private float speedY;
     private int blood;
-    
+    private int maxBlood; //them
     private int damage;
     
     private int direction;
-    
+
     protected Animation behurtForwardAnim, behurtBackAnim;
     
     private int teamType;
@@ -46,10 +46,18 @@ public abstract class ParticularObject extends GameObject {
         setWidth(width);
         setHeight(height);
         setMass(mass);
-        setBlood(blood);
+        this.blood=blood;
+        this.maxBlood=blood;
         
         direction = RIGHT_DIR;
 
+    }
+     public int getMaxBlood() {
+        return maxBlood;
+    }
+
+    public void setMaxBlood(int maxBlood) {
+        this.maxBlood = maxBlood;
     }
     
     public void setTimeForNoBehurt(long time){
@@ -175,7 +183,7 @@ public abstract class ParticularObject extends GameObject {
         switch(state){
             case ALIVE:
                 
-                //SET DAMAGE FOR OBJECT NO DAMAGE
+                // note: SET DAMAGE FOR OBJECT NO DAMAGE
                 ParticularObject object = getGameWorld().particularObjectManager.getCollisionWidthEnemyObject(this);
                 if(object!=null){
                     
@@ -233,6 +241,49 @@ public abstract class ParticularObject extends GameObject {
                 break;
         }
         
+    }
+    // File: ParticularObject.java
+// ... (Sau phương thức Update)
+
+    public void drawHealthBar(Graphics2D g2) {
+
+        // Chỉ vẽ thanh máu khi đối tượng còn sống (ALIVE) và máu nhỏ hơn máu tối đa
+        if (state == ALIVE && blood < maxBlood) { 
+
+            int currentHP = getBlood();
+
+            // Cài đặt kích thước thanh máu (bạn có thể điều chỉnh)
+            int barWidth = 40; 
+            int barHeight = 6; 
+            int padding = 5; // Khoảng cách từ đầu quái vật
+
+            // Lấy vị trí của quái vật trên màn hình (đã trừ offset Camera)
+            int xOnScreen = (int) (getPosX() - getGameWorld().camera.getPosX());
+            int yOnScreen = (int) (getPosY() - getGameWorld().camera.getPosY());
+
+            // 1. Xác định vị trí thanh máu (trên đầu đối tượng)
+            // Tọa độ X: căn giữa thanh máu so với tâm đối tượng
+            int barX = xOnScreen - barWidth / 2;
+            // Tọa độ Y: Đặt lên trên đầu (tâm Y - nửa chiều cao - chiều cao thanh máu - padding)
+            int barY = yOnScreen - (int)(getHeight() / 2) - barHeight - padding; 
+
+            // 2. Tính toán độ rộng của phần máu đỏ hiện tại
+            int currentHPWidth = (int) (((double)currentHP / maxBlood) * barWidth);
+
+            // 3. Vẽ nền thanh máu (màu xám)
+            g2.setColor(Color.GRAY);
+            g2.fillRect(barX, barY, barWidth, barHeight);
+
+            // 4. Vẽ máu hiện tại (màu đỏ)
+            g2.setColor(Color.RED);
+            g2.fillRect(barX, barY, currentHPWidth, barHeight);
+
+            // 5. Vẽ đường viền (tùy chọn)
+            g2.setColor(Color.BLACK);
+            g2.drawRect(barX, barY, barWidth, barHeight);
+        }
+
+        // Sau khi chết (FEY), chúng ta không cần vẽ thanh máu nữa, logic này đã được kiểm soát bởi if (state == ALIVE).
     }
 
     public void drawBoundForCollisionWithMap(Graphics2D g2){

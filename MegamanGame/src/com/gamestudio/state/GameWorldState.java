@@ -317,7 +317,13 @@ public class GameWorldState extends State {
 
         Graphics2D g2 = (Graphics2D) bufferedImage.getGraphics();
 
-        if(g2!=null){           
+        if(g2!=null){
+
+            // NOTE: two lines below make the error splash white screen....
+            // need to remove this line
+            //g2.setColor(Color.WHITE);
+            //g2.fillRect(0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT);
+            
             
             //physicalMap.draw(g2);
             
@@ -398,7 +404,6 @@ public class GameWorldState extends State {
                 megaMan.setDirection(megaMan.LEFT_DIR);
                 megaMan.run();
                 break;
-                
             case KeyEvent.VK_ENTER:
                 if(state == GameWorldState.INIT_GAME){
                     if(previousState == GameWorldState.GAMEPLAY)
@@ -416,7 +421,7 @@ public class GameWorldState extends State {
                         switchState(GameWorldState.GAMEPLAY);
                     }
                     
-                    //meeting boss tutorial
+                    // for meeting boss tutorial
                     if(tutorialState == GameWorldState.MEETFINALBOSS){
                         switchState(GameWorldState.GAMEPLAY);
                     }

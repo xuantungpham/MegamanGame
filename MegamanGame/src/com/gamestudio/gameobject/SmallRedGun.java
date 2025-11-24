@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.gamestudio.gameobject;
 
 import com.gamestudio.state.GameWorldState;
@@ -9,6 +13,10 @@ import static com.gamestudio.gameobject.ParticularObject.NOBEHURT;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+/**
+ *
+ * @author phamn
+ */
 public class SmallRedGun extends ParticularObject{
 
     private Animation forwardAnim, backAnim;
@@ -63,7 +71,7 @@ public class SmallRedGun extends ParticularObject{
     public void draw(Graphics2D g2) {
         if(!isObjectOutOfCameraView()){
             if(getState() == NOBEHURT && (System.nanoTime()/10000000)%2!=1){
-                
+                // plash...
             }else{
                 if(getDirection() == LEFT_DIR){
                     backAnim.Update(System.nanoTime());

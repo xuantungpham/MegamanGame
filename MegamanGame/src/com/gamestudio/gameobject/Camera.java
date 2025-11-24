@@ -1,8 +1,16 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.gamestudio.gameobject;
 
 import com.gamestudio.state.GameWorldState;
 
+/**
+ *
+ * @author phamn
+ */
 public class Camera extends GameObject {
 
     private float widthView;
@@ -26,9 +34,10 @@ public class Camera extends GameObject {
     
     @Override
     public void Update() {
+    
+        // NOTE: WHEN SEE FINAL BOSS, THE CAMERA WON'T CHANGE THE POSITION,
+        // AFTER THE TUTORIAL, CAMERA WILL SET THE NEW POS
         
-        //WHEN SEE FINAL BOSS, THE CAMERA WON'T CHANGE THE POSITION
-        //AFTER THE TUTORIAL, CAMERA WILL SET THE NEW POS
         if(!isLocked){
         
             MegaMan mainCharacter = getGameWorld().megaMan;

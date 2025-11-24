@@ -77,7 +77,11 @@ public abstract class Human extends ParticularObject{
                 }
 
 
-                //check the posY of megaMan
+
+                /**
+                 * Codes below check the posY of megaMan
+                 */
+                // plus (+2) because we must check below the character when he's speedY = 0
 
                 Rectangle boundForCollisionWithMapFuture = getBoundForCollisionWithMap();
                 boundForCollisionWithMapFuture.y += (getSpeedY()!=0?getSpeedY(): 2);

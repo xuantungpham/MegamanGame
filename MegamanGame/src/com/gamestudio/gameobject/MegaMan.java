@@ -11,6 +11,7 @@ public class MegaMan extends Human {
 
     public static final int RUNSPEED = 3;
     
+    
     private Animation runForwardAnim, runBackAnim, runShootingForwarAnim, runShootingBackAnim;
     private Animation idleForwardAnim, idleBackAnim, idleShootingForwardAnim, idleShootingBackAnim;
     private Animation dickForwardAnim, dickBackAnim;
@@ -104,6 +105,7 @@ public class MegaMan extends Human {
 
     @Override
     public Rectangle getBoundForCollisionWithEnemy() {
+        // TODO Auto-generated method stub
         Rectangle rect = getBoundForCollisionWithMap();
         
         if(getIsDicking()){
@@ -254,7 +256,7 @@ public class MegaMan extends Human {
             flyBackAnim.reset();
             flyForwardAnim.reset();
         }
-        //clim wall
+        // for clim wall
         else{
             Rectangle rectRightWall = getBoundForCollisionWithMap();
             rectRightWall.x += 1;

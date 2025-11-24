@@ -12,6 +12,16 @@ import java.net.URL;
 import java.util.Hashtable;
 import javax.imageio.ImageIO;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author phamn
+ */
 public class CacheDataLoader {
     
     private static CacheDataLoader instance = null;
@@ -81,7 +91,7 @@ public class CacheDataLoader {
         
         String line = null;
         
-        if(br.readLine()==null) {// no line = ""
+        if(br.readLine()==null) { // no line = "" or something like that
             System.out.println("No data");
             throw new IOException();
         }

@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.gamestudio.state;
 
 import com.gamestudio.control.Button;
@@ -10,6 +14,10 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
+/**
+ *
+ * @author phamn
+ */
 public class MenuState extends State {
     
     public final int NUMBER_OF_BUTTON = 2;

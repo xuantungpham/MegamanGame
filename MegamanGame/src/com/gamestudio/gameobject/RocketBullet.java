@@ -32,11 +32,13 @@ public class RocketBullet extends Bullet{
   
     @Override
     public Rectangle getBoundForCollisionWithEnemy() {
+            // TODO Auto-generated method stub
             return getBoundForCollisionWithMap();
     }
 
     @Override
     public void draw(Graphics2D g2) {
+            // TODO Auto-generated method stub
         if(getSpeedX() > 0){  
             if(getSpeedY() > 0){
                 forwardBulletAnimDown.draw((int) (getPosX() - getGameWorld().camera.getPosX()), (int) getPosY() - (int) getGameWorld().camera.getPosY(), g2);
@@ -68,6 +70,7 @@ public class RocketBullet extends Bullet{
     
     @Override
     public void Update() {
+            // TODO Auto-generated method stub
         super.Update();
         
         if(System.nanoTime() - startTimeForChangeSpeedY > 500*1000000){
