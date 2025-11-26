@@ -84,6 +84,8 @@ public class SmallRedGun extends ParticularObject{
                 }
             }
         }
+        drawHealthBar(g2);
+
         //drawBoundForCollisionWithEnemy(g2);
     }
     
